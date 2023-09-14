@@ -1,0 +1,13 @@
+# version: '3.8'
+#   services:
+#     app:
+#       build: .
+#     ports:
+#       - "8080:8080"
+#     # environment:
+#     #   SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/travels
+#     #   SPRING_DATASOURCE_USERNAME: travels
+#     #   SPRING_DATASOURCE_PASSWORD: travels
+
+# # volumes:
+# #   postgres-data:
