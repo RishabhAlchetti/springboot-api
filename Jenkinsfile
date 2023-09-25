@@ -28,22 +28,15 @@ pipeline {
                   bat 'echo off'
             }
         }
-
-	def mvnHome // Define the variable outside of the stage block
-        stage('Initialize') {
+        stage('Build') {
             steps {
                 script {
-                    mvnHome = tool name: 'maven_3.9', type: 'maven'
+                    def mvnHome = tool name: 'maven_3.9', type: 'maven'
+                    bat "${mvnHome}/bin/mvn clean package"
+                    // sh 'mv target/myweb*.war target/newapp.war'
                 }
             }
         }
-        stage('Build') {
-            steps {
-                bat "${mvnHome}/bin/mvn clean package"
-                // sh 'mv target/myweb*.war target/newapp.war'
-            }
-        }
-        
 
            
         // stage('Maven clean and install') {
