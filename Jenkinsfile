@@ -30,12 +30,18 @@ pipeline {
         }
 
            
-        stage('Maven clean and install') {
-            steps {
-                bat 'mvn clean install'
-            }
-        }
- 
+        // stage('Maven clean and install') {
+        //     steps {
+        //         bat 'mvn clean install'
+        //     }
+        // }
+
+       stage('build-stage-maven'){
+      def mvnHome =  tool name: 'maven', type: 'maven'   
+      sh "${mvnHome}/bin/mvn clean package"
+	  // sh 'mv target/myweb*.war target/newapp.war'
+   }
+        
       //   stage('Talisman Scan') {
     //         steps {
     //             script {
