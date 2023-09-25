@@ -9,9 +9,9 @@ pipeline {
         FEATURE_BRANCH = 'feature-branch'
     }
 
-    triggers {
-        pollSCM('0/15 * * * * *') // Poll every 15 sec
-    }
+    // triggers {
+    //     pollSCM('0/15 * * * * *') // Poll every 15 sec
+    // }
 
     stages {
         stage('Cloning code') {
