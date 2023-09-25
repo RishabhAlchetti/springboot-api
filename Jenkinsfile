@@ -29,18 +29,7 @@ pipeline {
             }
         }
 
-        stage('Remove Previous Container') {
-            steps {
-                script {
-                    try {
-                        bat 'docker rm -f container'
-                    } catch (Exception e) {
-                        // Do nothing if there is an exception
-                    }
-                }
-            }
-        }
-       
+           
         stage('Maven clean and install') {
             steps {
                 bat 'mvn clean install'
@@ -87,6 +76,19 @@ pipeline {
                 bat 'docker push rishabhalchetti/demo-repo-123:%BUILD_NUMBER%'
             }
         }
+
+        // stage('Remove Previous Container') {
+        //     steps {
+        //         script {
+        //             try {
+        //                 bat 'docker rm -f container1'
+        //             } catch (Exception e) {
+        //                 // Do nothing if there is an exception
+        //             }
+        //         }
+        //     }
+        // }
+        
         
         stage('Docker deployment') {
             steps {
