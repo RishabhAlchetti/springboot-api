@@ -36,9 +36,9 @@ pipeline {
         //     }
         // }
 
-       stage('build-stage-maven'){
-      def mvnHome =  tool name: 'maven', type: 'maven'   
-      sh "${mvnHome}/bin/mvn clean package"
+       stage('build-stage-Maven'){
+      def mvnHome =  tool name: 'maven_3.9', type: 'maven'   
+       bat "${mvnHome}/bin/mvn clean package"
 	  // sh 'mv target/myweb*.war target/newapp.war'
    }
         
