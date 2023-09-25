@@ -29,6 +29,22 @@ pipeline {
             }
         }
 
+	def mvnHome // Define the variable outside of the stage block
+        stage('Initialize') {
+            steps {
+                script {
+                    mvnHome = tool name: 'maven_3.9', type: 'maven'
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                bat "${mvnHome}/bin/mvn clean package"
+                // sh 'mv target/myweb*.war target/newapp.war'
+            }
+        }
+        
+
            
         // stage('Maven clean and install') {
         //     steps {
@@ -36,11 +52,11 @@ pipeline {
         //     }
         // }
 
-       stage('build-stage-Maven'){
-      def mvnHome =  tool name: 'maven_3.9', type: 'maven'   
-       bat "${mvnHome}/bin/mvn clean package"
-	  // sh 'mv target/myweb*.war target/newapp.war'
-   }
+   //     stage('build-stage-Maven'){
+   //    def mvnHome =  tool name: 'maven_3.9', type: 'maven'   
+   //     bat "${mvnHome}/bin/mvn clean package"
+	  // // sh 'mv target/myweb*.war target/newapp.war'
+   // }
         
       //   stage('Talisman Scan') {
     //         steps {
