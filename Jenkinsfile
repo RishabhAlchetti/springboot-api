@@ -28,28 +28,15 @@ pipeline {
                   bat 'echo off'
             }
         }
-        stage('Build') {
+        
+           
+        stage('Maven clean and install') {
             steps {
-                script {
-                    def mvnHome = tool name: 'maven_3.9', type: 'maven'
-                    bat "${mvnHome}/bin/mvn clean package"
-                    // sh 'mv target/myweb*.war target/newapp.war'
-                }
+                bat 'mvn clean install'
             }
         }
 
-           
-        // stage('Maven clean and install') {
-        //     steps {
-        //         bat 'mvn clean install'
-        //     }
-        // }
-
-   //     stage('build-stage-Maven'){
-   //    def mvnHome =  tool name: 'maven_3.9', type: 'maven'   
-   //     bat "${mvnHome}/bin/mvn clean package"
-	  // // sh 'mv target/myweb*.war target/newapp.war'
-   // }
+   
         
       //   stage('Talisman Scan') {
     //         steps {
