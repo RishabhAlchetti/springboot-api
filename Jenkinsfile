@@ -29,17 +29,17 @@ pipeline {
             }
         }
 
-        // stage('Remove Previous Container') {
-        //     steps {
-        //         script {
-        //             try {
-        //                 bat 'docker rm -f container'
-        //             } catch (Exception e) {
-        //                 // Do nothing if there is an exception
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Remove Previous Container') {
+            steps {
+                script {
+                    try {
+                        bat 'docker rm -f container'
+                    } catch (Exception e) {
+                        // Do nothing if there is an exception
+                    }
+                }
+            }
+        }
        
         stage('Maven clean and install') {
             steps {
