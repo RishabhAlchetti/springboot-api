@@ -9,9 +9,9 @@ pipeline {
         FEATURE_BRANCH = 'feature-branch'
     }
 
-    triggers {
-        pollSCM('0/15 * * * * *') // Poll every 15 sec
-    }
+    // triggers {
+    //     pollSCM('0/15 * * * * *') // Poll every 15 sec
+    // }
 
     stages {
         stage('Cloning code') {
@@ -29,17 +29,17 @@ pipeline {
             }
         }
 
-        stage('Remove Previous Container') {
-            steps {
-                script {
-                    try {
-                        bat 'docker rm -f container'
-                    } catch (Exception e) {
-                        // Do nothing if there is an exception
-                    }
-                }
-            }
-        }
+        // stage('Remove Previous Container') {
+        //     steps {
+        //         script {
+        //             try {
+        //                 bat 'docker rm -f container'
+        //             } catch (Exception e) {
+        //                 // Do nothing if there is an exception
+        //             }
+        //         }
+        //     }
+        // }
        
         stage('Maven clean and install') {
             steps {
@@ -90,7 +90,7 @@ pipeline {
         
         stage('Docker deployment') {
             steps {
-                bat 'docker run -itd -p 8080:9090 --name application rishabhalchetti/demo-repo-123:latest'
+                bat 'docker run -itd -p 8080:8080 --name apps rishabhalchetti/demo-repo-123:latest'
             }
         }
     }
