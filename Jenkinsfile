@@ -90,7 +90,7 @@ pipeline {
         
         stage('Docker deployment') {
             steps {
-                bat 'docker run -itd -p 8080:9090 --name container1 rishabhalchetti/demo-repo-123:latest'
+                bat 'docker run -itd -p 8080:9090 --name application rishabhalchetti/demo-repo-123:latest'
             }
         }
     }
